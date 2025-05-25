@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Registration</title>
+  <style>
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    output {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="registrationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required autofocus />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+    <label for="date">Event Date:</label>
+    <input type="date" id="date" name="date" required />
+
+    <label for="eventType">Event Type:</label>
+    <select id="eventType" name="eventType" required>
+      <option value="">Select an event</option>
+      <option value="festival">Festival</option>
+      <option value="concert">Concert</option>
+      <option value="fair">Fair</option>
+    </select>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" placeholder="Any special requests?"></textarea>
+
+    <button type="submit">Register</button>
+    <output id="confirmation"></output>
+  </form>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      confirmation.textContent = `Thank you, ${form.name.value}, for registering for the ${form.eventType.value} event on ${form.date.value}.`;
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
